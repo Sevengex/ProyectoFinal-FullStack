@@ -1,5 +1,3 @@
-// LEVANTAR NUESTRO SERIVICIO Y CONFIGURACIONES GLOBALES
-// importar herramientas / bibliotecas
 import "dotenv/config"
 import dotenv from "dotenv"
 import express, { Request, Response } from "express"
@@ -8,7 +6,6 @@ import connectDB from "./config/mongodb"
 import productRouter from "./routes/productRoutes"
 import authRoutes from "./routes/authRoutes"
 import morgan from "morgan"
-//import limiter from "./middleware/rateLimitMiddleware"
 import IUserTokenPayload from "./interfaces/IUserTokenPayload"
 import path from "node:path"
 import emailService from "./services/emailServices"
@@ -41,15 +38,12 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/auth", authRoutes)
 app.use("/products", productRouter)
 
-//enviar correo electronico
 app.post("/email/send", emailService)
 
-// endpoint para el 404 - no se encuentra el recurso
 app.use((req, res) => {
   res.status(404).json({ success: false, error: "El recurso no se encuentra" })
 })
 
-// servidor en escucha
 app.listen(PORT, () => {
   console.log(`✅ Servidor en escucha en el puerto http://localhost:${PORT}`)
   connectDB()

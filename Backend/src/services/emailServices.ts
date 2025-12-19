@@ -14,7 +14,7 @@ const emailService = async (req: Request, res: Response) => {
     const info = await transporter.sendMail({
       from: `"Tienda de software Pepito" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
-      replyTo: emailUser,        // mail del usuario que completa el formulario
+      replyTo: emailUser,
       subject,
       html: createTemplate(message),
     })

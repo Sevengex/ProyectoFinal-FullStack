@@ -1,6 +1,3 @@
-//FUNCIONES QUE SANITIZAN DATOS DE ENTRADA Y RESPONDEN AL CLIENTE
-//LA REQUEST Y EL RESPONSE SIEMPRE ESTARAN SOLO EN LOS CONTROLLERS
-
 import { Request, Response } from "express"
 import Product from "../model/ProductModel"
 import { Types } from "mongoose"
@@ -20,9 +17,7 @@ class ProductController {
       if (category) filter.category = new RegExp(String(category), "i")
       if (minPrice || maxPrice) {
         filter.price = {}
-        //masPrice -> si tengo precio maximo quiero un objeto con precio menor
         if (minPrice) filter.price.$gt = minPrice
-        //minPrice -> si tengo precio minimo quiero un objeto con precio mayor
         if (maxPrice) filter.price.$lt = maxPrice
       }
 
@@ -36,7 +31,7 @@ class ProductController {
 
   static getProduct = async (req: Request, res: Response): Promise<void | Response> => {
     try {
-      const { id } = req.params // es lo mismo que poner req.params.id
+      const { id } = req.params
 
       if (!Types.ObjectId.isValid(id)) {
         return res.status(400).json({ sucess: false, error: "ID Inválido" });
@@ -56,17 +51,13 @@ class ProductController {
 
   static addProduct = async (req: Request, res: Response): Promise<void | Response> => {
     try {
-      const { body, file } = req // Aca guardo los datos que me ingresa el usuario
+      const { body, file } = req
 
-      const { name, description, price, category, stock } = body // Los destructuro para luego poder usarlos mejor
+      const { name, description, price, category, stock } = body
 
-      // Primer validacion de que todos los datos que necesito estan si o si, de no ser asi, dara error 
       if (!name || !description || !price || !category || !stock) {
         return res.status(400).json({ success: false, message: "Todos los campos son requeridos" })
       }
-
-      //SI LO DESEO PUEDO DEJAR EL ZOD HAGA LA VALIDACION POR MI, son dos opciones viables, reeplazo el contenido de new Product({}) por validation.data, y elimino el primer if
-      // Valido que esten todas las propiedades del producto, en tal caso que no esten, muestro todos los errores que existen
 
       const dataToValidate = {
         name,
