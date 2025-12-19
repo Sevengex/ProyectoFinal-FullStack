@@ -1,4 +1,3 @@
-// src/layouts/Layout.jsx
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 

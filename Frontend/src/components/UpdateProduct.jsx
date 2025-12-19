@@ -42,7 +42,7 @@ const UpdateProduct = ({ product, onClose, onUpdate }) => {
 
       onUpdate()
       onClose()
-    } catch (error) {
+    } catch (e) {
       console.log("Error al actualizar el objeto :(")
     } finally {
       setLoader(false)

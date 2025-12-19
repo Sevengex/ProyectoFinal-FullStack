@@ -26,7 +26,6 @@ const Home = () => {
   })
   const [responseServer, setResponseServer] = useState(initialErrorState)
 
-  // { id: '6925fe9645e9b029b62ac797', iat: 1764101665, exp: 1764105265 }
   const { user, token } = useAuth()
 
   const fetchingProducts = async (query = "") => {
@@ -141,7 +140,7 @@ const Home = () => {
 
   return (
     <Layout>
-      <div className="page-banner">Nuestros Productos</div>
+      <div className="page-banner">Harmony Music Store</div>
 
       <section className="page-section">
         <p>
