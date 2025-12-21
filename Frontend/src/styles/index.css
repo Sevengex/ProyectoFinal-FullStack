@@ -55,6 +55,18 @@ body {
   z-index: 10;
 }
 
+.nav-btn {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform .15s ease, background .15s ease, opacity .15s ease;
+}
+
+
 .layout-nav {
   display: flex;
   justify-content: center;
@@ -63,7 +75,8 @@ body {
   flex-wrap: wrap;
 }
 
-.layout-nav a {
+.layout-nav a,
+.layout-nav button {
   color: var(--text);
   text-decoration: none;
   font-weight: 600;
@@ -73,10 +86,18 @@ body {
   transition: transform .15s ease, background .15s ease, opacity .15s ease;
 }
 
-.layout-nav a:hover {
+
+.layout-nav a:hover,
+.layout-nav button:hover {
   opacity: 0.95;
   background: rgba(255, 255, 255, 0.08);
   transform: translateY(-1px);
+}
+
+.layout-nav button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .layout-main {

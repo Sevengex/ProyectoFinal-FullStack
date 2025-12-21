@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
               :
               <>
                 <Link to="/agregar-producto">Agregar producto</Link>
-                <button onClick={handleLogout}>Cerrar sesión</button>
+                <button className="nav-btn" onClick={handleLogout}>Cerrar sesión</button>
               </>
           }
         </nav>
