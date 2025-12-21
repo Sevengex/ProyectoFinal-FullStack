@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useAuth } from "../context/AuthContext"
+import { ToastMessage } from "./ToastMessage"
 
 const UpdateProduct = ({ product, onClose, onUpdate }) => {
   const [toast, setToast] = useState(null)
@@ -41,19 +42,29 @@ const UpdateProduct = ({ product, onClose, onUpdate }) => {
         body: JSON.stringify(dataToUpdate)
       })
 
-      if (!response.ok) {
-        setToast({ msg: "❌ Error al actualizar el producto", color: "red" })
+      const data = await response.json().catch(() => ({}))
+
+      if (!response.ok || data.success === false) {
+        const msg =
+          (typeof data.error === "string" && data.error) ||
+          data.message ||
+          "❌ Error al actualizar el producto"
+
+        setToast({ msg, color: "red" })
         setTimeout(() => setToast(null), 4000)
         return
-      } else {
-        setToast({ msg: "✅ Éxito al actualizar el nuevo producto", color: "green" })
-        setTimeout(() => setToast(null), 4000)
       }
+      setToast({ msg: "✅ Producto actualizado con éxito", color: "green" })
+      setTimeout(() => {
+        setToast(null)
+        onUpdate()
+        onClose()
+      }, 1200)
 
-      onUpdate()
-      onClose()
+
     } catch (e) {
-
+      setToast({ msg: "❌ No se pudo conectar con el servidor", color: "red" })
+      setTimeout(() => setToast(null), 4000)
     } finally {
       setLoader(false)
     }
