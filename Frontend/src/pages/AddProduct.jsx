@@ -2,8 +2,10 @@ import { useState } from "react"
 import Layout from "../components/Layout"
 import { useAuth } from "../context/AuthContext"
 import { useNavigate } from "react-router-dom"
+import { ToastMessage } from "../components/ToastMessage"
 
 const AddProduct = () => {
+  const [toast, setToast] = useState(null)
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -11,6 +13,8 @@ const AddProduct = () => {
     stock: "",
     category: ""
   })
+
+  const { name, description, price, stock, category } = formData
 
   const navigate = useNavigate()
 
@@ -25,8 +29,6 @@ const AddProduct = () => {
       stock: Number(formData.stock),
     }
 
-    console.log(token)
-
     try {
       const response = await fetch(`http://localhost:3000/products`, {
         method: "POST",
@@ -37,12 +39,24 @@ const AddProduct = () => {
         body: JSON.stringify(dataToSend)
       })
 
-      if (!response.ok) {
-        alert("❌ Error al cargar el producto")
+      if (!name || !description || !price || !stock || !category) {
+        setToast({ msg: "❌Campos incompletos", color: "red" })
+        setTimeout(() => setToast(null), 4000)
         return
       }
 
-      alert("✅ Éxito al guardar el nuevo producto")
+      if (!response.ok) {
+        setToast({ msg: "❌ Error al cargar el producto", color: "red" })
+        setTimeout(() => setToast(null), 4000)
+        return
+      } else {
+        setToast({ msg: "✅ Éxito al guardar el nuevo producto", color: "green" })
+        setTimeout(() => setToast(null), 4000)
+        setTimeout(() => {
+          navigate("/")
+        }, 2000)
+      }
+
       setFormData({
         name: "",
         description: "",
@@ -50,7 +64,7 @@ const AddProduct = () => {
         stock: "",
         category: ""
       })
-      navigate("/")
+
     } catch (error) {
 
     }
@@ -63,6 +77,7 @@ const AddProduct = () => {
 
   return (
     <Layout>
+      {toast && <ToastMessage msg={toast.msg} color={toast.color} />}
       <div className="page-banner">Agregar Nuevo Producto</div>
 
       <section className="page-section">

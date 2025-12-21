@@ -15,6 +15,8 @@ const Home = () => {
     }
   }
 
+  const [confirmDelete, setConfirmDelete] = useState(null)
+  const [toast, setToast] = useState(null)
   const [products, setProducts] = useState([])
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [filters, setFilters] = useState({
@@ -38,7 +40,7 @@ const Home = () => {
       setProducts(dataProducts.data.reverse())
       setResponseServer({
         success: true,
-        notification: "Exito al cargar los productos",
+        notification: "",
         error: {
           ...responseServer.error,
           fetch: true
@@ -92,13 +94,9 @@ const Home = () => {
       setTimeout(() => setResponseServer(initialErrorState), 3000)
 
     } catch (e) {
+      setToast({ msg: "Error al borrar el producto", color: "red" })
+      setTimeout(() => setToast(null), 4000)
       console.log(e.message)
-      setResponseServer({
-        success: false,
-        notification: "Error al borrar el producto",
-        error: { fetch: null, delete: true }
-      })
-      setTimeout(() => setResponseServer(initialErrorState), 3000)
     }
   }
 
@@ -140,6 +138,39 @@ const Home = () => {
 
   return (
     <Layout>
+      {confirmDelete && (
+        <div className="modal-overlay">
+          <div className="modal-box">
+            <h3>¿Eliminar producto?</h3>
+            <p>Esta acción no se puede deshacer.</p>
+
+            <div className="card-actions">
+              <button
+                onClick={() => {
+                  deleteProduct(confirmDelete)
+                  setConfirmDelete(null)
+                }}
+              >
+                Sí, borrar
+              </button>
+
+              <button
+                className="close-btn"
+                onClick={() => setConfirmDelete(null)}
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {toast && <ToastMessage msg={toast.msg} color={toast.color} />}
+      {responseServer.notification && (
+        <ToastMessage
+          msg={responseServer.notification}
+          color={responseServer.success ? "green" : "red"}
+        />
+      )}
       <div className="page-banner">Harmony Music Store</div>
 
       <section className="page-section">
@@ -218,12 +249,13 @@ const Home = () => {
             {
               user && <div className="cont-btn">
                 <button onClick={() => handleUpdateProduct(p)}>Actualizar</button>
-                <button onClick={() => deleteProduct(p._id)}>Borrar</button>
+                <button onClick={() => setConfirmDelete(p._id)}>Borrar</button>
               </div>
             }
           </div>
         ))}
       </section>
+
     </Layout>
   )
 }
