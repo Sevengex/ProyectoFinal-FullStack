@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useAuth } from "../context/AuthContext"
 
 const UpdateProduct = ({ product, onClose, onUpdate }) => {
+  const [toast, setToast] = useState(null)
   const [loader, setLoader] = useState(false)
   const [formData, setFormData] = useState({
     name: product.name,
@@ -40,10 +41,19 @@ const UpdateProduct = ({ product, onClose, onUpdate }) => {
         body: JSON.stringify(dataToUpdate)
       })
 
+      if (!response.ok) {
+        setToast({ msg: "❌ Error al actualizar el producto", color: "red" })
+        setTimeout(() => setToast(null), 4000)
+        return
+      } else {
+        setToast({ msg: "✅ Éxito al actualizar el nuevo producto", color: "green" })
+        setTimeout(() => setToast(null), 4000)
+      }
+
       onUpdate()
       onClose()
     } catch (e) {
-      console.log("Error al actualizar el objeto :(")
+
     } finally {
       setLoader(false)
     }
@@ -51,6 +61,7 @@ const UpdateProduct = ({ product, onClose, onUpdate }) => {
 
   return (
     <section className="modal-overlay">
+      {toast && <ToastMessage msg={toast.msg} color={toast.color} />}
       <div className="modal-box">
         <h2>Editar producto</h2>
         <form className="form-container" onSubmit={handleSubmit}>

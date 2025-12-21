@@ -64,7 +64,6 @@ const Home = () => {
   }, [])
 
   const deleteProduct = async (idProduct) => {
-    if (!confirm("Esta seguro de que quieres borrar el producto")) return
 
     try {
       const response = await fetch(`http://localhost:3000/products/${idProduct}`, {
@@ -175,7 +174,7 @@ const Home = () => {
 
       <section className="page-section">
         <p>
-          Bienvenido {user && user.id} a nuestra tienda. Aquí encontrarás una amplia variedad de productos diseñados para satisfacer
+          Bienvenido a nuestra tienda. Aquí encontrarás una amplia variedad de productos diseñados para satisfacer
           tus necesidades. Nuestro compromiso es ofrecer calidad y confianza.
         </p>
       </section>
