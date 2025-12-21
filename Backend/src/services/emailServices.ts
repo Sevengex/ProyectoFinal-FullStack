@@ -12,7 +12,7 @@ const emailService = async (req: Request, res: Response) => {
 
   try {
     const info = await transporter.sendMail({
-      from: `"Tienda de software Pepito" <${process.env.EMAIL_USER}>`,
+      from: `"Harmony Music Store" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
       replyTo: emailUser,
       subject,

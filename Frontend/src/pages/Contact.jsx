@@ -1,12 +1,16 @@
 import { useState } from "react";
 import Layout from "../components/Layout";
+import { ToastMessage } from "../components/ToastMessage";
 
 export default function Contact() {
+  const [toast, setToast] = useState(null)
   const [form, setForm] = useState({
     subject: "",
     email: "",
     message: ""
   });
+
+  const { subject, email, message } = form
 
   const handleChange = (e) => {
     setForm({
@@ -25,9 +29,25 @@ export default function Contact() {
         },
         body: JSON.stringify(form)
       })
-      const dataResponse = await response.json()
 
-      console.log(dataResponse)
+      const responseData = await response.json()
+
+      if (!subject || !email || !message) {
+        setToast({ msg: "Campos incompletos", color: "red" })
+        setTimeout(() => setToast(null), 4000)
+        return
+      }
+
+      if (!responseData) {
+        setToast({ msg: "Data Invalida", color: "red" })
+        setTimeout(() => setToast(null), 4000)
+        return
+      } else {
+        setToast({ msg: "Mensaje enviado", color: "green" })
+        setTimeout(() => setToast(null), 4000)
+      }
+
+      console.log(responseData)
     } catch (error) {
       console.log(error)
     }
@@ -35,6 +55,7 @@ export default function Contact() {
 
   return (
     <Layout>
+      {toast && <ToastMessage msg={toast.msg} color={toast.color} />}
       <h1>Contacto</h1>
 
       <form className="contact-form" onSubmit={handleSubmit}>

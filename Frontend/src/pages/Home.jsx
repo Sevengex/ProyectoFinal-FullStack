@@ -224,8 +224,6 @@ const Home = () => {
           </div>
         ))}
       </section>
-      {!responseServer.error.fetch && <ToastMessage color={"red"} msg={responseServer.notification} />}
-      {responseServer.success && <ToastMessage color={"green"} msg={responseServer.notification} />}
     </Layout>
   )
 }

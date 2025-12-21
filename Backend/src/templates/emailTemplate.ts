@@ -54,7 +54,7 @@ const createTemplate = (message = String) => {
   <body>
     <div class="container">
       <div class="header">
-        <h1>Tienda de Software Pepito</h1>
+        <h1>Harmony Music Store</h1>
       </div>
 
       <div class="content">
@@ -68,7 +68,7 @@ const createTemplate = (message = String) => {
       </div>
 
       <div class="footer">
-        <p>© ${new Date().getFullYear()} Tienda de Software Pepito</p>
+        <p>© ${new Date().getFullYear()} Harmony Music Store</p>
         <p>Este es un mensaje automático, por favor no respondas.</p>
       </div>
     </div>

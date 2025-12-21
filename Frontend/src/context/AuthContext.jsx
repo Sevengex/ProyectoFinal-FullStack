@@ -11,6 +11,7 @@ const decodeJWT = (token) => {
     const base64Payload = token.split(".")[1];
     const payload = atob(base64Payload.replace(/-/g, "+").replace(/_/g, "/"));
     return JSON.parse(payload);
+    // eslint-disable-next-line no-unused-vars
   } catch (error) {
     return null;
   }
@@ -46,4 +47,5 @@ const AuthProvider = ({ children }) => {
 // custom hook
 const useAuth = () => useContext(AuthContext)
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { AuthProvider, useAuth }

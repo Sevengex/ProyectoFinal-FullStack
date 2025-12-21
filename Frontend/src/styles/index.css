@@ -382,40 +382,56 @@ body {
 }
 
 /* ============ Toast ============ */
+/* Fondo oscuro + centrado */
 .toast {
-  width: 320px;
-  padding: 12px 12px 14px 12px;
-  border-radius: 14px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-  color: white;
   position: fixed;
-  right: 14px;
-  bottom: 14px;
-  z-index: 30;
-  animation: toastInOut 4s ease forwards;
+  inset: 0;
+  /* top:0 right:0 bottom:0 left:0 */
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* oscurece el fondo */
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(2px);
+
+  /* animación del overlay */
+  animation: toastOverlayInOut 2s ease forwards;
 }
 
-@keyframes toastInOut {
+/* La “caja” del mensaje (popup) */
+.toast-box {
+  width: min(520px, 92vw);
+  padding: 18px 20px;
+  border-radius: 16px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+  color: white;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+}
+
+/* Animación suave (aparece y desaparece) */
+@keyframes toastOverlayInOut {
   0% {
-    transform: translateY(20px);
     opacity: 0;
   }
 
   12% {
-    transform: translateY(0);
     opacity: 1;
   }
 
   85% {
-    transform: translateY(0);
     opacity: 1;
   }
 
   100% {
-    transform: translateY(10px);
     opacity: 0;
   }
 }
+
 
 /* ============ Contact ============ */
 .contact-form {

@@ -2,8 +2,11 @@ import { useNavigate } from "react-router-dom"
 import Layout from "../components/Layout"
 import { useAuth } from "../context/AuthContext"
 import { useState } from "react"
+import { ToastMessage } from "../components/ToastMessage"
 
 const Login = () => {
+  const [toast, setToast] = useState(null)
+
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -32,7 +35,8 @@ const Login = () => {
       const responseData = await response.json()
 
       if (responseData.error) {
-        alert(responseData.error)
+        setToast({ msg: "Datos inválidos", color: "red" })
+        setTimeout(() => setToast(null), 4000)
         return
       }
 
@@ -45,6 +49,7 @@ const Login = () => {
 
   return (
     <Layout>
+      {toast && <ToastMessage msg={toast.msg} color={toast.color} />}
       <div className="center-auth">
         <form className="form-container" onSubmit={handleSubmit}>
           <h3>Iniciar Sesión</h3>
