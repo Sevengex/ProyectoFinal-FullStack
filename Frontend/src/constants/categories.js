@@ -1,21 +1,21 @@
 const CATEGORIES = [
-  { id: 1, value: "tecnologia", content: "Tecnología" },
-  { id: 2, value: "electrohogar", content: "Electrohogar" },
-  { id: 3, value: "indumentaria", content: "Indumentaria" },
-  { id: 4, value: "calzado", content: "Calzado" },
-  { id: 5, value: "accesorios", content: "Accesorios" },
-  { id: 6, value: "deportes", content: "Deportes" },
-  { id: 7, value: "hogar", content: "Hogar" },
-  { id: 8, value: "muebles", content: "Muebles" },
-  { id: 9, value: "juguetes", content: "Juguetes" },
-  { id: 10, value: "belleza", content: "Belleza y Cuidado Personal" },
-  { id: 11, value: "salud", content: "Salud" },
-  { id: 12, value: "automotor", content: "Automotor" },
-  { id: 13, value: "mascotas", content: "Mascotas" },
-  { id: 14, value: "oficina", content: "Oficina y Papelería" },
-  { id: 15, value: "alimentos", content: "Alimentos y Bebidas" },
-  { id: 16, value: "herramientas", content: "Herramientas" },
-  { id: 17, value: "construccion", content: "Construcción" }
+  { id: 1, value: "guitarras", content: "Guitarras" },
+  { id: 2, value: "bajos", content: "Bajos" },
+  { id: 3, value: "teclados", content: "Teclados y Pianos" },
+  { id: 4, value: "baterias", content: "Baterías y Percusión" },
+  { id: 5, value: "instrumentos_viento", content: "Instrumentos de Viento" },
+  { id: 6, value: "instrumentos_cuerda", content: "Instrumentos de Cuerda" },
+  { id: 7, value: "audio", content: "Audio y Sonido" },
+  { id: 8, value: "amplificadores", content: "Amplificadores" },
+  { id: 9, value: "efectos", content: "Pedales y Efectos" },
+  { id: 10, value: "estudio", content: "Estudio y Grabación" },
+  { id: 11, value: "microfonos", content: "Micrófonos" },
+  { id: 12, value: "dj", content: "DJ y Controladores" },
+  { id: 13, value: "accesorios", content: "Accesorios Musicales" },
+  { id: 14, value: "partituras", content: "Partituras y Libros" },
+  { id: 15, value: "fundas", content: "Fundas y Estuches" },
+  { id: 16, value: "cables", content: "Cables y Conectividad" },
+  { id: 17, value: "iluminacion", content: "Iluminación Escénica" }
 ]
 
 export { CATEGORIES }
