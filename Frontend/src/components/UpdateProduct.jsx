@@ -33,7 +33,7 @@ const UpdateProduct = ({ product, onClose, onUpdate }) => {
 
     try {
       setLoader(true)
-      const response = await fetch(`http://localhost:3000/products/${product._id}`, {
+      const response = await fetch(`https://proyectofinal-fullstack-1-7xiw.onrender.com/products/${product._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

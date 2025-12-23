@@ -4,11 +4,12 @@ import express, { Request, Response } from "express"
 import cors from "cors"
 import connectDB from "./config/mongodb"
 import productRouter from "./routes/productRoutes"
-import authRoutes from "./routes/authRoutes"
+
 import morgan from "morgan"
 import IUserTokenPayload from "./interfaces/IUserTokenPayload"
 import path from "node:path"
 import emailService from "./services/emailServices"
+import authRouter from "./routes/authRouter"
 
 
 dotenv.config()
@@ -35,7 +36,7 @@ app.get("/", (req: Request, res: Response) => {
   res.json({ status: true })
 })
 
-app.use("/auth", authRoutes)
+app.use("/auth", authRouter)
 app.use("/products", productRouter)
 
 app.post("/email/send", emailService)

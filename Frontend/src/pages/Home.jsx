@@ -33,7 +33,7 @@ const Home = () => {
   const fetchingProducts = async (query = "") => {
     setResponseServer(initialErrorState)
     try {
-      const response = await fetch(`http://localhost:3000/products?${query}`, {
+      const response = await fetch(`https://proyectofinal-fullstack-1-7xiw.onrender.com/products?${query}`, {
         method: "GET"
       })
       const dataProducts = await response.json()
@@ -66,7 +66,7 @@ const Home = () => {
   const deleteProduct = async (idProduct) => {
 
     try {
-      const response = await fetch(`http://localhost:3000/products/${idProduct}`, {
+      const response = await fetch(`https://proyectofinal-fullstack-1-7xiw.onrender.com/products/${idProduct}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` }
       })
@@ -133,6 +133,7 @@ const Home = () => {
       minPrice: 0,
       maxPrice: 0
     })
+    fetchingProducts()
   }
 
   return (
