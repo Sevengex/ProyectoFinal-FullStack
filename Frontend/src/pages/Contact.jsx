@@ -56,43 +56,43 @@ export default function Contact() {
   return (
     <Layout>
       {toast && <ToastMessage msg={toast.msg} color={toast.color} />}
-      <h1>Contacto</h1>
+      <section className="contact-section">
+        <h1>Contacto</h1>
+        <h3>Si deseas comunicarte con nosotros, dejanos un mensaje y nos comunicaremos a la brevedad!</h3>
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <div>
+            <label>Correo electrónico</label>
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+            />
+          </div>
 
-      <form className="contact-form" onSubmit={handleSubmit}>
+          <div>
+            <label>Asunto</label>
+            <input
+              type="text"
+              name="subject"
+              value={form.subject}
+              onChange={handleChange}
+            />
+          </div>
 
+          <div>
+            <label>Mensaje</label>
+            <textarea
+              name="message"
+              rows="4"
+              value={form.message}
+              onChange={handleChange}
+            />
+          </div>
 
-        <div>
-          <label>Correo electrónico</label>
-          <input
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label>Asunto</label>
-          <input
-            type="text"
-            name="subject"
-            value={form.subject}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label>Mensaje</label>
-          <textarea
-            name="message"
-            rows="4"
-            value={form.message}
-            onChange={handleChange}
-          />
-        </div>
-
-        <button type="submit">Enviar</button>
-      </form>
+          <button type="submit">Enviar</button>
+        </form>
+      </section>
     </Layout>
   );
 }

@@ -170,16 +170,17 @@ const Home = () => {
           color={responseServer.success ? "green" : "red"}
         />
       )}
-      <div className="page-banner">Harmony Music Store</div>
+      <div className="page-banner">
+        <div className="page-banner__content">
+          <h1 className="page-banner__title">
+            Bienvenidos a <span className="accent">Harmony</span> <span className="accent-2">Music Store</span>
+          </h1>
+          <p className="page-banner__subtitle">Tu tienda de instrumentos musicales</p>
+        </div>
+      </div>
 
-      <section className="page-section">
-        <p>
-          Bienvenido a nuestra tienda. Aquí encontrarás una amplia variedad de productos diseñados para satisfacer
-          tus necesidades. Nuestro compromiso es ofrecer calidad y confianza.
-        </p>
-      </section>
-
-      <section >
+      <section className="filters-section">
+        <h3 className="filters-title">Filtrar Instrumentos</h3>
         <form className="filters-form" onSubmit={handleSubmit}>
           <input
             type="text"

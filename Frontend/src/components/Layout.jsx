@@ -38,7 +38,7 @@ const Layout = ({ children }) => {
       </main>
 
       <footer className="layout-footer">
-        <p>Sitio desarrollado por UTN</p>
+        <p>Sitio desarrollado por Leonardo Duarte</p>
       </footer>
     </>
   )
