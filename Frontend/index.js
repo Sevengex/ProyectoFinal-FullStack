@@ -1,5 +1,5 @@
 const fetchingProducts = async () => {
-  const response = await fetch("https://proyectofinal-fullstack-1-7xiw.onrender.com.com/productos", {
+  const response = await fetch("https://proyectofinal-fullstack-qudi.onrender.com.com/productos", {
     method: "GET",
   });
 
@@ -36,7 +36,7 @@ const renderProducts = (productos) => {
   cards.forEach((card) => {
     card.addEventListener("click", async () => {
       const id = card.dataset.id;
-      const res = await fetch(`https://proyectofinal-fullstack-1-7xiw.onrender.com/productos/${id}`);
+      const res = await fetch(`https://proyectofinal-fullstack-qudi.onrender.com/productos/${id}`);
       const producto = await res.json();
       console.log(producto)
       showPopup(producto);

@@ -25,7 +25,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await fetch("https://proyectofinal-fullstack-1-7xiw.onrender.com/auth/login", {
+      const response = await fetch("https://proyectofinal-fullstack-qudi.onrender.com/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

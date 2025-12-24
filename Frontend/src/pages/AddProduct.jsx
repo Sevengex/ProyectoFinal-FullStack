@@ -30,7 +30,7 @@ const AddProduct = () => {
     }
 
     try {
-      const response = await fetch(`https://proyectofinal-fullstack-1-7xiw.onrender.com/products`, {
+      const response = await fetch(`https://proyectofinal-fullstack-qudi.onrender.com/products`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

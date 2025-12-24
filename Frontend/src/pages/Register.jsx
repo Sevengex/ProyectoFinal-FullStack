@@ -20,7 +20,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await fetch("https://proyectofinal-fullstack-1-7xiw.onrender.com/auth/register", {
+      const response = await fetch("https://proyectofinal-fullstack-qudi.onrender.com/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
