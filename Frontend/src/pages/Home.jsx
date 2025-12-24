@@ -133,7 +133,7 @@ const Home = () => {
       minPrice: 0,
       maxPrice: 0
     })
-    fetchingProducts("")
+    fetchingProducts()
   }
 
   return (
