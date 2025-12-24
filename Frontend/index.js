@@ -1,5 +1,5 @@
 const fetchingProducts = async () => {
-  const response = await fetch("https://proyectofinal-fullstack-qudi.onrender.com.com/productos", {
+  const response = await fetch("https://proyectofinal-fullstack-qudi.onrender.com/productos", {
     method: "GET",
   });
 
