@@ -133,7 +133,7 @@ const Home = () => {
       minPrice: 0,
       maxPrice: 0
     })
-    fetchingProducts()
+    fetchingProducts("")
   }
 
   return (
@@ -202,7 +202,7 @@ const Home = () => {
             onChange={handleChange}
             value={filters.category}
           >
-            <option value="">Todas las categorias</option>
+            <option defaultValue>Todas las categorias</option>
             {
               CATEGORIES.map((category) =>
                 <option key={category.id}
